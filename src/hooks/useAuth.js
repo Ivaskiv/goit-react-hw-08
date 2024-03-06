@@ -12,3 +12,4 @@ export const useAuth = () => {
     user,
   };
 };
+export default useAuth;

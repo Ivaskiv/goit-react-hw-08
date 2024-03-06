@@ -1,33 +1,47 @@
+import { Suspense, lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchContacts } from '../../redux/contactsRedux/operations';
 import { Route, Routes } from 'react-router-dom';
+// import { fetchContacts } from '../../redux/contactsRedux/operations';
+import { Layout } from '../Layout';
 import './App.css';
-import ContactForm from '../ContactForm/ContactForm';
-import Layout from '../Layout';
-import HomePage from '../../pages/HomePage';
-import RestrictedRoute from '../RestrictedRoute';
-import PrivateRoute from '../PrivateRoute';
-import SearchBox from '../SearchBox/SearchBox';
-import ContactList from '../ContactList/ContactList';
-import RegisterPage from '../../pages/RegisterPage';
-import LoginPage from '../../pages/LoginPage';
-import ContactsPage from '../../pages/ContactsPage';
+import { PrivateRoute } from '../PrivateRoute';
+import { RestrictedRoute } from '../RestrictedRoute';
+import { SearchBox } from '../SearchBox/SearchBox';
+import { ContactList } from '../ContactList/ContactList';
 import { selectVisibleContacts } from '../../redux/contactsRedux/selectors';
+import { useAuth } from '../../hooks/useAuth';
+import { refreshUser } from '../../redux/authRedux/operations';
+import { Toaster } from 'react-hot-toast';
+import { ContactForm } from '../ContactForm/ContactForm.jsx';
+
+const HomePage = lazy(() => import('../../pages/HomePage'));
+const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
+const LoginPage = lazy(() => import('../../pages/LoginPage'));
+const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
   const visibleContacts = useSelector(selectVisibleContacts);
 
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <div className="container">
       <Routes>
         <Route path="/" element={<Layout />} />
-        <Route index element={<HomePage />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <HomePage />
+            </Suspense>
+          }
+        />
         <Route
           path="/register"
           element={<RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />}
@@ -41,6 +55,7 @@ export const App = () => {
           element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />}
         />
       </Routes>
+      <Toaster />
       <h1>Phonebook</h1>
       <ContactForm />
       <p className="searchText">Find contacts by name</p>

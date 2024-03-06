@@ -1,16 +1,16 @@
-//ContactsPage.jsx
-import { useEffect } from 'react';
+// ContactsPage.jsx
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { selectError, selectIsLoading } from '../redux/contactsRedux/selectors';
+import { fetchContacts } from '../redux/contactsRedux/operations';
+import { selectVisibleContacts } from '../redux/contactsRedux/selectors'; // Виправлення імпорту
 import ContactForm from '../components/ContactForm/ContactForm';
-import ContactList from '../components/ContactList/ContactList';
 import SearchBox from '../components/SearchBox/SearchBox';
-import { selectVisibleContacts } from '../redux/contactsRedux/selectors';
-import { fetchContacts } from '../redux/contactsRedux/contactsOperations';
+import ContactList from '../components/ContactList/ContactList'; // Доданий імпорт
 
 export const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   const visibleContacts = useSelector(selectVisibleContacts);
 

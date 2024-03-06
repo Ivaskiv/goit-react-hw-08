@@ -19,7 +19,7 @@ const contactSchema = Yup.object().shape({
     .required('This is a required field'),
 });
 
-const ContactForm = () => {
+export const ContactForm = () => {
   const dispatch = useDispatch();
   const handleSubmit = async (values, actions) => {
     try {

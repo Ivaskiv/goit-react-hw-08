@@ -1,4 +1,4 @@
-import DocumentTitle from '../components/DocumentTitle';
+import { DocumentTitle } from '../components/DocumentTitle';
 
 const styles = {
   container: {
@@ -14,7 +14,7 @@ const styles = {
   },
 };
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <>
       <DocumentTitle>Home</DocumentTitle>

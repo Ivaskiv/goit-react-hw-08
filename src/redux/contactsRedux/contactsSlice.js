@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchContacts,
   addContact,
   deleteContact,
   toggleCompleted,
 } from '../contactsRedux/operations';
+import { createSlice } from '@reduxjs/toolkit';
 import { logOut } from '../authRedux/operations';
 
 const handlePending = state => {
@@ -51,9 +51,9 @@ const contactsSlice = createSlice({
       // Додавання нового контакту до масиву
       .addCase(deleteContact.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
+        state.items = [];
         state.isLoading = false;
         state.error = null;
-        state.items = [];
       })
       .addCase(toggleCompleted.fulfilled, (state, action) => {
         state.items = state.items.map(contact => {

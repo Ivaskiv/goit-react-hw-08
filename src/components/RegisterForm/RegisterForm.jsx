@@ -1,27 +1,43 @@
 // RegisterForm.jsx
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import css from './RegisterForm.module.css';
-import { register } from '../../redux/authRedux/operations';
 
-const RegisterForm = () => {
+export const RegisterForm = () => {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({ ...prevState, [name]: value }));
-  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(register(formData));
-    setFormData({ name: '', email: '', password: '' });
+    const form = e.target;
+
+    dispatch(
+      register({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+
+    form.reset();
   };
+
+  // const RegisterForm = () => {
+  //   const dispatch = useDispatch();
+  //   const [formData, setFormData] = useState({
+  //     name: '',
+  //     email: '',
+  //     password: '',
+  //   });
+
+  //   const handleChange = e => {
+  //     const { name, value } = e.target;
+  //     setFormData(prevState => ({ ...prevState, [name]: value }));
+  //   };
+
+  //   const handleSubmit = e => {
+  //     e.preventDefault();
+  //     dispatch(register(formData));
+  //     setFormData({ name: '', email: '', password: '' });
+  //   };
 
   return (
     <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
@@ -41,5 +57,3 @@ const RegisterForm = () => {
     </form>
   );
 };
-
-export default RegisterForm;
