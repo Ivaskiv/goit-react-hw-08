@@ -19,26 +19,6 @@ export const RegisterForm = () => {
 
     form.reset();
   };
-
-  // const RegisterForm = () => {
-  //   const dispatch = useDispatch();
-  //   const [formData, setFormData] = useState({
-  //     name: '',
-  //     email: '',
-  //     password: '',
-  //   });
-
-  //   const handleChange = e => {
-  //     const { name, value } = e.target;
-  //     setFormData(prevState => ({ ...prevState, [name]: value }));
-  //   };
-
-  //   const handleSubmit = e => {
-  //     e.preventDefault();
-  //     dispatch(register(formData));
-  //     setFormData({ name: '', email: '', password: '' });
-  //   };
-
   return (
     <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
       <label className={css.label}>
@@ -57,3 +37,23 @@ export const RegisterForm = () => {
     </form>
   );
 };
+export default RegisterForm;
+
+// const RegisterForm = () => {
+//   const dispatch = useDispatch();
+//   const [formData, setFormData] = useState({
+//     name: '',
+//     email: '',
+//     password: '',
+//   });
+
+//   const handleChange = e => {
+//     const { name, value } = e.target;
+//     setFormData(prevState => ({ ...prevState, [name]: value }));
+//   };
+
+//   const handleSubmit = e => {
+//     e.preventDefault();
+//     dispatch(register(formData));
+//     setFormData({ name: '', email: '', password: '' });
+//   };
