@@ -8,3 +8,4 @@ export const DocumentTitle = ({ children }) => {
     </Helmet>
   );
 };
+export default DocumentTitle;
