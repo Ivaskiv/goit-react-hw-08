@@ -1,10 +1,12 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
-const RestrictedRoute = ({ element: Element, redirectTo = '/' }) => {
+const RestrictedRoute = ({ element, redirectTo = '/' }) => {
   const { isLoggedIn } = useAuth();
 
-  return <Route element={isLoggedIn ? <Navigate to={redirectTo} /> : <Element />} />;
+  return isLoggedIn ? <Navigate to={redirectTo} /> : element;
 };
 
 export default RestrictedRoute;
+
+//якщо користувач увійшов у систему (isLoggedIn === true), його перенаправлять за вказаним шляхом (redirectTo), інакше буде відображено переданий компонент (Element).

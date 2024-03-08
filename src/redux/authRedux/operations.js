@@ -1,6 +1,6 @@
 // operationsAuth.js
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // Set the base URL for Axios
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';

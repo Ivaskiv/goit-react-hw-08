@@ -1,6 +1,6 @@
 //layout
 import { Suspense } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AppBar } from './AppBar/AppBar.jsx';
 
@@ -8,11 +8,6 @@ export const Layout = () => {
   return (
     <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 16px' }}>
       <AppBar />
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/register">Register</Link>
-        <Link to="/login">Login</Link>
-      </nav>
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
@@ -20,3 +15,5 @@ export const Layout = () => {
     </div>
   );
 };
+
+//створює загальний макет застосунку, який включає верхню панель (AppBar), навігаційне меню (nav), вміст для вкладених компонентів (Outlet), а також Toaster для виведення повідомлень
