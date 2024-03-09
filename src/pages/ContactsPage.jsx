@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 
 export const ContactsPage = () => {
   const dispatch = useDispatch();
-  // const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchContacts());
