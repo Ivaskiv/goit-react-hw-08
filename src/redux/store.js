@@ -19,6 +19,7 @@ const authPersistConfig = {
   storage,
   whitelist: ['token'],
 };
+import thunk from 'redux-thunk'; // ======
 
 export const store = configureStore({
   reducer: {
@@ -32,6 +33,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+  middleware: [...getDefaultMiddleware(), thunk], //===========
   devTools: process.env.NODE_ENV === 'development',
 });
 
