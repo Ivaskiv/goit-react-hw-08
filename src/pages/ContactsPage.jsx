@@ -1,14 +1,16 @@
 // ContactsPage.jsx
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { selectIsLoading } from '../redux/contactsRedux/selectors';
 import { fetchContacts } from '../redux/contactsRedux/operations';
 import ContactForm from '../components/ContactForm/ContactForm';
 import SearchBox from '../components/SearchBox/SearchBox';
 import ContactList from '../components/ContactList/ContactList'; // Доданий імпорт
+import { useDispatch } from 'react-redux';
+
 export const ContactsPage = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
+  // const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchContacts());
