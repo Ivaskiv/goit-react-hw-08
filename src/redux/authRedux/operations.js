@@ -18,6 +18,7 @@ const clearAuthHeader = () => {
 };
 
 /*
+ * Асинхронна операція реєстрації користувача
  * POST @ /users/signup
  * body: { name, email, password }
  */
@@ -25,12 +26,17 @@ export const register = createAsyncThunk('auth/register', async (credentials, th
   console.log('Register Credentials:', credentials);
   try {
     const res = await axios.post('/users/signup', credentials);
+    // Встановлення отриманого токену до заголовків
     setAuthHeader(res.data.token);
+    // Виведення повідомлення про успішну реєстрацію
     toast.success('User created successfully!');
+    // Повернення отриманих даних для збереження в Redux store
     return res.data;
   } catch (error) {
     console.error('Registration Error:', error);
+    // Виведення повідомлення про помилку реєстрації
     toast.error('User creation error.');
+    // Обробка різних видів помилок і повернення відповідного значення
     if (error.response) {
       return thunkAPI.rejectWithValue(error.response.data);
     } else if (error.request) {
