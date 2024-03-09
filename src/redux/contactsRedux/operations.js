@@ -1,6 +1,7 @@
 // contactsOperations.js
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { addContactSuccess, addContactError } from './contactsSlice'; // =======
 
 export const fetchContacts = createAsyncThunk('contacts/fetchAll', async (_, thunkAPI) => {
   try {
@@ -14,9 +15,11 @@ export const fetchContacts = createAsyncThunk('contacts/fetchAll', async (_, thu
 export const addContact = createAsyncThunk('contacts/addContact', async (newContact, thunkAPI) => {
   try {
     const response = await axios.post('/contacts', newContact);
+    thunkAPI.dispatch(addContactSuccess(response.data)); // ======
     return response.data;
-  } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
+  } catch (error) {
+    thunkAPI.dispatch(addContactError(error.message)); // =========
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
 

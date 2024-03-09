@@ -56,7 +56,7 @@ export const ContactForm = () => {
           <label className={css.labelForm} htmlFor="number">
             Phone
           </label>
-          <Field className={css.input} type="number" name="number" id="number" />
+          <Field className={css.input} type="text" name="number" id="number" />
           <ErrorMessage className={css.error} name="number" component="span" />
         </div>
 

@@ -10,3 +10,9 @@ export const selectVisibleContacts = createSelector(
     return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   }
 );
+
+// selectContacts: Вибирає весь об'єкт стану контактів.
+// selectFilter: Вибирає поле фільтрації імені з об'єкта стану фільтрів.
+// selectIsLoading: Вибирає стан завантаження контактів.
+// selectError: Вибирає стан помилок контактів.
+// selectVisibleContacts: Використовує createSelector для комбінації selectContacts і selectFilter. Він фільтрує контакти на основі значення фільтра і повертає відфільтрований масив.
