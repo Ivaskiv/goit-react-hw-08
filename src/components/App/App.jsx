@@ -3,12 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { PrivateRoute } from '../../components/PrivateRoute';
-import { SearchBox } from '../SearchBox/SearchBox';
-import { ContactList } from '../ContactList/ContactList';
 import { useAuth } from '../../hooks/useAuth';
 import { refreshUser } from '../../redux/authRedux/operations';
 import { Toaster } from 'react-hot-toast';
-import ContactForm from '../ContactForm/ContactForm';
 import { Layout } from '../Layout';
 import { selectVisibleContacts } from '../../redux/contactsRedux/selectors';
 import RestrictedRoute from '../RestrictedRoute';
@@ -18,11 +15,16 @@ const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
 const LoginPage = lazy(() => import('../../pages/LoginPage'));
 const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
 
-const App = () => {
+export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-  const visibleContacts = useSelector(selectVisibleContacts);
+  //===========
+  const token = useSelector(state => state.auth.token);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
+  console.log('Token:', token);
+  console.log('isLoggedIn:', isLoggedIn);
+  //===============
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);

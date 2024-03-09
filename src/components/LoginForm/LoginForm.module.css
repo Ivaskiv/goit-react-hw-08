@@ -1,0 +1,67 @@
+.containerForm {
+  display: flex;
+  justify-content: center;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 30px;
+  width: 376px;
+  min-height: 230px;
+
+  background-color: #ffffff;
+  border: 1px solid #423d3d;
+  transition: border-color 0.25s;
+  border-radius: 12px;
+  position: relative;
+  overflow: auto;
+}
+
+.labelForm {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.inputField {
+  max-width: 390px;
+  padding: 8px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+.contactFormGroup {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+.error {
+  position: relative;
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: -15px;
+}
+
+button {
+  display: inline-block;
+  position: absolute;
+  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  padding: 4px 8px;
+
+  border-radius: 8px;
+  border: 1px solid #079a44;
+  transition: border 0.25s;
+}
+
+button:hover {
+  border: 3px solid #079a44;
+  outline: none;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px;
+}

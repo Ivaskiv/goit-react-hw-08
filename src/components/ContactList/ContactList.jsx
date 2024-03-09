@@ -9,12 +9,12 @@ export const ContactList = () => {
   };
   return (
     <ul className={css.contactList}>
-      {visibleContacts.map(({ id, name, phone }) => (
+      {visibleContacts.map(({ id, name, number }) => (
         <Contact
           key={id}
           id={id + name}
           name={name}
-          phone={phone}
+          number={number}
           onDelete={() => handleDeleteContact(id)}
         />
       ))}

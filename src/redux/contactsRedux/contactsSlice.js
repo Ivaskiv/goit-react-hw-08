@@ -66,22 +66,6 @@ const contactsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       });
-    //=====================
-    // .addCase(deleteContact.fulfilled, (state, action) => {
-    //   state.items = state.items.filter(contact => contact.id !== action.payload);
-    //   state.isLoading = false;
-    //   state.error = null;
-    // })
-    // .addCase(deleteContact.rejected, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.error.message;
-    // })
-
-    // })
-    // .addCase(toggleCompleted.rejected, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.error.message;
-    // });
   },
 });
 

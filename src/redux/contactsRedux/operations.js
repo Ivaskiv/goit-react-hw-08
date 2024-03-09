@@ -36,7 +36,7 @@ export const toggleCompleted = createAsyncThunk(
   'contacts/toggleCompleted',
   async (contact, thunkAPI) => {
     try {
-      const response = await axios.put(`/contacts/${contact.id}`, {
+      const response = await axios.patch(`/contacts/${contact.id}`, {
         completed: !contact.completed,
       });
       return response.data;

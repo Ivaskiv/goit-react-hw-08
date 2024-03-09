@@ -9,12 +9,12 @@ const contactSchema = Yup.object().shape({
     .min(3, 'Name must be at least 3 characters long')
     .max(50, 'Name must not exceed 50 characters')
     .required('This is a required field'),
-  phone: Yup.string()
-    .min(5, 'phone must be at least 5 characters long')
-    .max(20, 'phone must not exceed 20 characters')
+  number: Yup.string()
+    .min(5, 'number must be at least 5 characters long')
+    .max(20, 'number must not exceed 20 characters')
     .matches(
       /^(\d{3}-\d{3}-\d{4}|\(\d{3}\) \d{3}-\d{4}|\+\d{1,2}\s\d{3}-\d{3}-\d{4}|\d{10})$/,
-      'Invalid phone phone format.'
+      'Invalid number number format.'
     )
     .required('This is a required field'),
 });
@@ -27,7 +27,7 @@ export const ContactForm = () => {
       await dispatch(
         addContact({
           name: values.name,
-          phone: values.phone,
+          number: values.number,
         })
       );
       // Якщо вдалося додати контакт, скидаємо форму
@@ -39,7 +39,7 @@ export const ContactForm = () => {
   };
   return (
     <Formik
-      initialValues={{ name: '', phone: '' }}
+      initialValues={{ name: '', number: '' }}
       validationSchema={contactSchema}
       onSubmit={handleSubmit}
     >
@@ -53,11 +53,11 @@ export const ContactForm = () => {
         </div>
 
         <div className={css.contactFormGroup}>
-          <label className={css.labelForm} htmlFor="phone">
+          <label className={css.labelForm} htmlFor="number">
             Phone
           </label>
-          <Field className={css.input} type="text" name="phone" id="phone" />
-          <ErrorMessage className={css.error} name="phone" component="span" />
+          <Field className={css.input} type="number" name="number" id="number" />
+          <ErrorMessage className={css.error} name="number" component="span" />
         </div>
 
         <button className={css.btnAddContact} type="submit">
