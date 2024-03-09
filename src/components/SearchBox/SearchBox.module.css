@@ -1,8 +1,11 @@
 .searchBox {
-  width: 400px;
+  width: 376px;
+  margin: auto;
 }
 
 .searchBox input {
+  display: block;
+  margin: 0 auto;
   padding: 5px 10px;
   box-sizing: border-box;
   width: 100%;

@@ -43,27 +43,29 @@ export const ContactForm = () => {
       validationSchema={contactSchema}
       onSubmit={handleSubmit}
     >
-      <Form className={css.contactForm} autoComplete="off">
-        <div className={css.contactFormGroup}>
-          <label className={css.labelForm} htmlFor="name">
-            Name
-          </label>
-          <Field className={css.input} type="text" name="name" id="name" />
-          <ErrorMessage className={css.error} name="name" component="span" />
-        </div>
+      <div className={css.contactForm}>
+        <Form autoComplete="off">
+          <div className={css.contactFormGroup}>
+            <label className={css.labelForm} htmlFor="name">
+              Name
+            </label>
+            <Field className={css.input} type="text" name="name" id="name" />
+            <ErrorMessage className={css.error} name="name" component="span" />
+          </div>
 
-        <div className={css.contactFormGroup}>
-          <label className={css.labelForm} htmlFor="number">
-            Phone
-          </label>
-          <Field className={css.input} type="text" name="number" id="number" />
-          <ErrorMessage className={css.error} name="number" component="span" />
-        </div>
+          <div className={css.contactFormGroup}>
+            <label className={css.labelForm} htmlFor="number">
+              Phone
+            </label>
+            <Field className={css.input} type="text" name="number" id="number" />
+            <ErrorMessage className={css.error} name="number" component="span" />
+          </div>
 
-        <button className={css.btnAddContact} type="submit">
-          Add contact
-        </button>
-      </Form>
+          <button className={css.btnAddContact} type="submit">
+            Add contact
+          </button>
+        </Form>
+      </div>
     </Formik>
   );
 };

@@ -1,8 +1,10 @@
 import { useDispatch } from 'react-redux';
-import css from './Contact.module.css';
-import { FanumberAlt, FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
+import { FaPhoneAlt } from 'react-icons/fa';
 
-export const Contact = ({ id, name, number, onDelete }) => {
+import css from './Contact.module.css';
+
+export const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteContact(id));
@@ -16,7 +18,7 @@ export const Contact = ({ id, name, number, onDelete }) => {
           {name}
         </p>
         <p className={css.contactnumber}>
-          <FanumberAlt className={css.icon} />
+          <FaPhoneAlt className={css.icon} />
           {number}
         </p>
       </div>

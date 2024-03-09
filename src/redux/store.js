@@ -11,15 +11,14 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { contactsReducer } from './contactsRedux/contactsSlice';
-import { authReducer } from './authRedux/authSlice';
 import { filtersReducer } from './contactsRedux/filterSlice';
-// Persisting token field from auth slice to localstorage
+import { authReducer } from './authRedux/authSlice';
+
 const authPersistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
 };
-import thunk from 'redux-thunk'; // ======
 
 export const store = configureStore({
   reducer: {
@@ -33,7 +32,6 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  middleware: [...getDefaultMiddleware(), thunk], //===========
   devTools: process.env.NODE_ENV === 'development',
 });
 

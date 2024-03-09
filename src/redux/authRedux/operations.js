@@ -8,7 +8,6 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 // Utility to add JWT
 const setAuthHeader = token => {
-  console.log('Received Token:', token);
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -23,7 +22,6 @@ const clearAuthHeader = () => {
  * body: { name, email, password }
  */
 export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
-  console.log('Register Credentials:', credentials);
   try {
     const res = await axios.post('/users/signup', credentials);
     // Встановлення отриманого токену до заголовків

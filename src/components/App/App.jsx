@@ -19,11 +19,9 @@ export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
   //===========
-  const token = useSelector(state => state.auth.token);
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  // const token = useSelector(state => state.auth.token);
+  // const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
-  console.log('Token:', token);
-  console.log('isLoggedIn:', isLoggedIn);
   //===============
   useEffect(() => {
     dispatch(refreshUser());

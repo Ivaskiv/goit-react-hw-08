@@ -1,15 +1,15 @@
-// ContactsPage.jsx
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { fetchContacts } from '../redux/contactsRedux/operations';
-import ContactForm from '../components/ContactForm/ContactForm';
-import SearchBox from '../components/SearchBox/SearchBox';
-import ContactList from '../components/ContactList/ContactList'; // Доданий імпорт
-import { selectVisibleContacts } from '../redux/contactsRedux/selectors';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ContactForm } from '../components/ContactForm/ContactForm';
+import { SearchBox } from '../components/SearchBox/SearchBox';
+import { ContactList } from '../components/ContactList/ContactList';
+import { selectError, selectIsLoading } from '../redux/contactsRedux/selectors';
 
 export const ContactsPage = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectVisibleContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -18,10 +18,9 @@ export const ContactsPage = () => {
   return (
     <div>
       <ContactForm />
-      <h1>Phone Book</h1>
       <p>Find contacts by name</p>
-      {isLoading && 'Request in progress...'}
       <SearchBox />
+      {isLoading && !error && <b>Loading</b>}
       <ContactList />
     </div>
   );
