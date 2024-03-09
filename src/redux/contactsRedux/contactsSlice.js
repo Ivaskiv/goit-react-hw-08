@@ -24,6 +24,14 @@ const contactsSlice = createSlice({
     isLoading: false, // Прапорець, що вказує на те, чи триває завантаження
     error: null, // Об'єкт помилки, який вказує на можливу помилку в процесі завантаження
   },
+  reducers: {
+    addContactSuccess: (state, action) => {
+      state.items.push(action.payload);
+    },
+    addContactError: (state, action) => {
+      state.error = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.pending, handlePending)
@@ -70,4 +78,5 @@ const contactsSlice = createSlice({
 });
 
 // Експорт редуктора для використання в Redux store
+export const { addContactSuccess, addContactError } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
